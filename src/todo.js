@@ -14,7 +14,7 @@ let todo = {
 		this.priority = priority;
 		let creationDate = new Date();
 
-		if (title != undefined) {
+		if (title !== undefined) {
 			this.todolist.push({
 				title,
 				project,
