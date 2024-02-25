@@ -4,6 +4,9 @@ let dom = {
 	// the div container for the todo on the screen
 	todoContainer: document.querySelector(".todoContainer"),
 
+	// ther button for clearning all of the todos
+	clearButton: document.querySelector("#clearbutton"),
+
 	// // the container of the input of the todo
 	// inputContainer: document.querySelector(".test"),
 
@@ -32,11 +35,12 @@ let dom = {
 
 	// display the todo in a container of your chosing
 
-	showTodo: function (todo, container) {
+	showTodo: function (todo, container, todolist) {
 		let div = document.createElement("div");
 		// loop over the todo keys and add them to the dive
 		for (const [key, value] of Object.entries(todo)) {
 			let innerDiv = document.createElement("div");
+			innerDiv.className = "mt-4";
 			innerDiv.innerText = `${key} : ${value}`;
 			div.append(innerDiv);
 			// remove the creatiion date from showing
@@ -44,10 +48,34 @@ let dom = {
 				div.removeChild(innerDiv);
 			}
 		}
+		div.className = " ";
 		// add the dive to the contianer
+		this.finshTodo(todo, todolist, container, div);
+
+		this.addLine(div);
 		container.append(div);
 	},
+	// adds a line to the todo card
+	addLine: function (container) {
+		let line = document.createElement("hr");
+		line.classList = "mt-4";
+		container.append(line);
+	},
+	//  the button to celar the todo if it is done
+	finshTodo: function (todo, todolist, contianer, tododiv) {
+		let button = document.createElement("button");
 
+		button.addEventListener("click", () => {
+			todolist.splice(todolist.indexOf(todo), 1);
+			tododiv.innerHTML = "";
+			contianer.removeChild(tododiv);
+			localStorage.removeItem(todo);
+		});
+		button.className =
+			"mt-4 btn  btn-outline btn-accent btn-xs sm:btn-sm md:btn-md rounded ";
+		button.innerText = "X";
+		tododiv.append(button);
+	},
 	// replaced with the dialog tag
 
 	// //  to show the input for creating a new todo show the input (compontant)

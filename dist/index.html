@@ -14,29 +14,48 @@
 		</style>
 		<title>ToDo App</title>
 	</head>
-	<body>
-		<section>
-			<div class="container">
-				<button type="button" class="viewinput bg-red-500">add task</button>
+	<body class="text-white">
+		<section class="bg-neutral min-h-screen flex flex-col items-center">
+			<div class="container w-full flex flex-col items-center">
+				<button
+					type="button"
+					class="viewinput btn btn-active btn-primary btn-xs sm:btn-sm md:btn-md mt-4"
+				>
+					+ ADD TASK
+				</button>
 			</div>
-			<div class="todoContainer"></div>
+			<div
+				class="todoContainer m-8 text-xl capitalize flex flex-col gap-4 w-1/2"
+			></div>
 			<!-- <div class="test"></div> -->
-			<dialog class="dialog">
-				<form action="submit" class="form">
-					<p>please add the following</p>
+			<dialog class="dialog modal p-8 bg-secondaryrounded">
+				<form action="submit" class="form modal-box">
+					<p>Please Add The Following</p>
 					<label for="title"> Title</label>
-					<input type="text" id="title" />
-					<label for="project"> project</label>
-					<input type="text" id="project" />
-					<label for="descreption"> descreption</label>
-					<input type="text" id="descreption" />
-					<label for="dueDate"> dueDate</label>
-					<input type="date" id="dueDate" />
-					<label for="priority"> priority</label>
-					<input type="text" id="priority" />
-					<button type="submit" id="button">submit</button>
+					<input type="text" id="title" class="rounded" />
+					<label for="project"> Project</label>
+					<input type="text" id="project" class="rounded" />
+					<label for="descreption"> Descreption</label>
+					<input type="text" id="descreption" class="rounded" />
+					<label for="dueDate"> DueDate</label>
+					<input type="date" id="dueDate" class="rounded" />
+					<label for="priority"> Priority</label>
+					<input type="text" id="priority" class="rounded" />
+					<button
+						type="submit"
+						id="button"
+						class="btn btn-secondary btn-primary btn-xs sm:btn-sm md:btn-md"
+					>
+						submit
+					</button>
 				</form>
 			</dialog>
+			<button
+				id="clearbutton"
+				class="btn btn-accent btn-xs sm:btn-sm md:btn-md rounded"
+			>
+				CLEAR ALL TODOS
+			</button>
 		</section>
 	</body>
 </html>
