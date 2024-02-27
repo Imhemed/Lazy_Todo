@@ -14,12 +14,12 @@
 		</style>
 		<title>ToDo App</title>
 	</head>
-	<body class="text-white">
+	<body class="box-border overflow-hidden min-h-fit">
 		<section class="bg-neutral min-h-screen flex flex-col items-center">
 			<div class="container w-full flex flex-col items-center">
 				<button
 					type="button"
-					class="viewinput btn btn-active btn-primary btn-xs sm:btn-sm md:btn-md mt-4"
+					class="viewinput btn btn-accent btn-xs sm:btn-sm md:btn-md rounded"
 				>
 					+ ADD TASK
 				</button>
@@ -50,12 +50,20 @@
 					</button>
 				</form>
 			</dialog>
-			<button
-				id="clearbutton"
-				class="btn btn-accent btn-xs sm:btn-sm md:btn-md rounded"
-			>
-				CLEAR ALL TODOS
-			</button>
+			<div>
+				<button
+					id="clearbutton"
+					class="btn btn-accent btn-xs sm:btn-sm md:btn-md rounded m-4"
+				>
+					CLEAR ALL TODOS
+				</button>
+				<button
+					id="sortbutton"
+					class="btn btn-accent btn-xs sm:btn-sm md:btn-md rounded m-4"
+				>
+					SORT BY PROJECT
+				</button>
+			</div>
 		</section>
 	</body>
 </html>

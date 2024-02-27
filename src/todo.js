@@ -1,5 +1,6 @@
 let todo = {
 	todolist: [],
+	sortedList: {},
 	addTodo: function (
 		title = undefined,
 		project = undefined,
@@ -39,16 +40,32 @@ let todo = {
 	removeTodo: function (title) {
 		this.todolist.splice(this.findTodoIndex(title), 1);
 	},
-	quaryTodo: function (key, value) {
-		let quary = [];
+
+	// quaryTodo: function (key, value) {
+	// 	let quary = [];
+	// 	this.todolist.forEach((todo) => {
+	// 		if (todo.hasOwnProperty(key)) {
+	// 			if (todo[key] === value) {
+	// 				quary.push(todo);
+	// 			}
+	// 		}
+	// 	});
+	// 	return quary;
+	// },
+
+	// sort the todo list by project
+	sortTodo: function (sortedList) {
+		// loop over the todo list
 		this.todolist.forEach((todo) => {
-			if (todo.hasOwnProperty(key)) {
-				if (todo[key] === value) {
-					quary.push(todo);
-				}
+			// if the project name is not a key in the sorted list object then create it
+			if (!Object.keys(sortedList).includes(todo.project)) {
+				sortedList[todo.project] = [];
 			}
+			// pusch the todo in the project array
+			sortedList[todo.project].push(todo);
 		});
-		return quary;
+
+		return sortedList;
 	},
 };
 

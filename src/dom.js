@@ -16,9 +16,13 @@ let dom = {
 	// the dialog
 	dialog: document.querySelector(".dialog"),
 
-	// Methods
 	inputbutton: document.querySelector("#button"),
 
+	// sort button
+
+	sortButton: document.querySelector("#sortbutton"),
+
+	// Methods
 	// return object with the dom elements
 	getInput: function () {
 		let input = {
@@ -40,7 +44,7 @@ let dom = {
 		// loop over the todo keys and add them to the dive
 		for (const [key, value] of Object.entries(todo)) {
 			let innerDiv = document.createElement("div");
-			innerDiv.className = "mt-4";
+			innerDiv.className = "mt-4  min-h-fit";
 			innerDiv.innerText = `${key} : ${value}`;
 			div.append(innerDiv);
 			// remove the creatiion date from showing
@@ -72,32 +76,28 @@ let dom = {
 			localStorage.removeItem(todo);
 		});
 		button.className =
-			"mt-4 btn  btn-outline btn-accent btn-xs sm:btn-sm md:btn-md rounded ";
+			"mt-4 btn   btn-accent btn-xs sm:btn-sm md:btn-md rounded text-black ";
 		button.innerText = "X";
 		tododiv.append(button);
 	},
-	// replaced with the dialog tag
 
-	// //  to show the input for creating a new todo show the input (compontant)
+	displaySortedList: function (sortedList, todolist) {
+		// when deleting items always pass in the original location
+		this.todoContainer.innerHTML = "";
+		let container = document.createElement("div");
 
-	// showinput: function (parrent) {
-	// 	let div = document.createElement("div");
-	// 	div.className = "divInput";
-	// 	div.innerHTML = `<form action="submit" class="form">
-	// 	<p>please add the following</p>
-	// 	<label for="title"> Title</label>
-	// 	<input type="text" id="title" />
-	// 	<label for="project"> project</label>
-	// 	<input type="text" id="project" />
-	// 	<label for="descreption"> descreption</label>
-	// 	<input type="text" id="descreption" />
-	// 	<label for="dueDate"> dueDate</label>
-	// 	<input type="date" id="dueDate" />
-	// 	<label for="priority"> priority</label>
-	// 	<input type="text" id="priority" />
-	// 	<button type="submit" id="button">submit</button>
-	// </form>`;
-	// 	parrent.append(div);
-	// },
+		for (const [key, value] of Object.entries(sortedList)) {
+			let h2 = document.createElement("h2");
+			h2.className = "text-2xl mt-4 ";
+			h2.innerText = ` Project ${key}`;
+
+			container.append(h2);
+
+			for (let i = 0; i < value.length; i++) {
+				this.showTodo(value[i], container, todolist);
+			}
+		}
+		this.todoContainer.append(container);
+	},
 };
 export { dom };

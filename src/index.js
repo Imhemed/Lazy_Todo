@@ -11,8 +11,6 @@ import { dom } from "./dom";
 	});
 })();
 
-console.log(todo.todolist);
-
 dom.viewInput.addEventListener("click", () => {
 	console.log("hi");
 	dom.dialog.showModal();
@@ -56,4 +54,13 @@ dom.clearButton.addEventListener("click", () => {
 	todo.todolist = [];
 	dom.todoContainer.innerHTML = "";
 	localStorage.clear();
+});
+dom.sortButton.addEventListener("click", () => {
+	console.log(todo.sortedList);
+
+	todo.sortTodo(todo.sortedList);
+	console.log(todo.sortedList);
+	dom.displaySortedList(todo.sortedList, todo.todolist);
+
+	todo.sortedList = {};
 });
